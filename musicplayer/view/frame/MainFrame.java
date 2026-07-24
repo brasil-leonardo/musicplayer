@@ -5,12 +5,14 @@ import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import musicplayer.view.panel.InfoPanel;
 import musicplayer.view.panel.MenuPanel;
 import musicplayer.view.panel.MusicListPanel;
 
 public class MainFrame extends JFrame {
     private final MenuPanel menuPanel;
     private final MusicListPanel musicListPanel;
+    private final InfoPanel infoPanel;
 
     public MainFrame() {
         setTitle("MusicPlayer");
@@ -39,6 +41,9 @@ public class MainFrame extends JFrame {
 
         musicListPanel = new MusicListPanel();
         add(musicListPanel, BorderLayout.CENTER);
+
+        infoPanel = new InfoPanel();
+        add(infoPanel, BorderLayout.LINE_END);
 
         setVisible(true);
     }

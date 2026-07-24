@@ -2,6 +2,7 @@ package musicplayer.view.panel;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -17,11 +18,13 @@ public class MusicListPanel extends JScrollPane {
         controller = new MusicListController();
 
         Dimension size = new Dimension(600, 500);
-        this.setSize(size);
+        setSize(size);
+        setMinimumSize(size);
+        setPreferredSize(size);
+        setMaximumSize(size);
 
         panel = new JPanel();
-        Dimension panelSize = new Dimension(600, 500);
-        panel.setSize(panelSize);
+
         BoxLayout layoutManager = new BoxLayout(panel, BoxLayout.Y_AXIS);
         panel.setLayout(layoutManager);
         setViewportView(panel);
@@ -34,8 +37,10 @@ public class MusicListPanel extends JScrollPane {
 
     public void loadMusics() {
         ArrayList<Music> musics = controller.getMusics(controller.getHomePath().toString());
+        panel.add(Box.createVerticalStrut(1));
         for (Music music : musics) {
             panel.add(new MusicCard(music.getName(), music.getFilePath()));
+            panel.add(Box.createVerticalStrut(1));
         }
     }
 }
